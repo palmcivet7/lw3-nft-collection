@@ -47,7 +47,7 @@ contract CryptoDevs is ERC721Enumerable, Ownable {
     constructor(
         string memory baseURI,
         address whitelistContract
-    ) ERC721("Crypto Devs", "CD") {
+    ) ERC721("Palmcivet Test NFTs", "PTN") {
         _baseTokenURI = baseURI;
         whitelist = IWhitelist(whitelistContract);
     }
@@ -74,7 +74,10 @@ contract CryptoDevs is ERC721Enumerable, Ownable {
             whitelist.whitelistedAddresses(msg.sender),
             "You are not whitelisted"
         );
-        require(tokenIds < maxTokenIds, "Exceeded maximum Crypto Devs supply");
+        require(
+            tokenIds < maxTokenIds,
+            "Exceeded maximum Palmcivet Test NFTs supply"
+        );
         require(msg.value >= _price, "Ether sent is not correct");
         tokenIds += 1;
         //_safeMint is a safer version of the _mint function as it ensures that
@@ -91,7 +94,10 @@ contract CryptoDevs is ERC721Enumerable, Ownable {
             presaleStarted && block.timestamp >= presaleEnded,
             "Presale has not ended yet"
         );
-        require(tokenIds < maxTokenIds, "Exceed maximum Crypto Devs supply");
+        require(
+            tokenIds < maxTokenIds,
+            "Exceed maximum Palmcivet Test NFTs supply"
+        );
         require(msg.value >= _price, "Ether sent is not correct");
         tokenIds += 1;
         _safeMint(msg.sender, tokenIds);
